@@ -25,6 +25,15 @@ GET localhost:8080/stats
 
 ## Cloud Endpoints
 
+POST https://mercadolibretest.azurewebsites.net/mutant
+
+{
+"dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
+}
+
+GET https://mercadolibretest.azurewebsites.net/stats
+
+Available until June 23, 2021
 
 ## Docs
 
