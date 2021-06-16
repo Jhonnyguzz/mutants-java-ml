@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.mercadolibre</groupId>
     <artifactId>mutants</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>mutants</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -20,8 +20,9 @@
         <azure.functions.maven.plugin.version>1.12.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>1.4.2</azure.functions.java.library.version>
         <functionAppName>mercadolibretest</functionAppName>
-        <functionResourceGroup>ASP-Testing-af1c</functionResourceGroup>
-        <functionAppRegion>centralus</functionAppRegion>
+        <resourceGroup>Testing</resourceGroup>
+        <appServicePlanName>ASP-Testing-8c8b</appServicePlanName>
+        <region>centralus</region>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
         <start-class>com.mercadolibre.mutants.MutantsApplication</start-class>
     </properties>
@@ -45,11 +46,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- <dependency>
+        <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <scope>runtime</scope>
-        </dependency> -->
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -68,11 +69,6 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -139,11 +135,12 @@
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-functions-maven-plugin</artifactId>
                 <configuration>
-                    <resourceGroup>${functionResourceGroup}</resourceGroup>
                     <appName>${functionAppName}</appName>
-                    <region>${functionAppRegion}</region>
+                    <resourceGroup>${resourceGroup}</resourceGroup>
+                    <appServicePlanName>${appServicePlanName}</appServicePlanName>
+                    <region>${region}</region>
                     <runtime>
-                        <os>linux</os>
+                        <os>windows</os>
                         <javaVersion>11</javaVersion>
                     </runtime>
                     <appSettings>
